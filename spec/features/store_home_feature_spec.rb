@@ -36,6 +36,7 @@ describe 'Feature Test: Store', :type => :feature do
       context "logged in" do
         before(:each) do
           @user = User.first
+
           login_as(@user, scope: :user)
         end
 
@@ -70,7 +71,9 @@ describe 'Feature Test: Store', :type => :feature do
         end
 
         it "tells the user who they are signed in as" do
+
           visit store_path
+
           expect(page).to have_content("Signed in as #{@user.email}")
         end
 
